@@ -11,13 +11,6 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-    // @Autowired
-    // private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    // public UserService(BCryptPasswordEncoder bCryptPasswordEncoder) {
-    //     this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    // }
-
     public User addUser(User user) {
         user.setPassword(user.getPassword());
 

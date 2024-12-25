@@ -1,4 +1,4 @@
-package com.postgresql.huydau.config;
+package com.postgresql.huydau.config.jwt;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

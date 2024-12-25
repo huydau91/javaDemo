@@ -1,5 +1,7 @@
 package com.postgresql.huydau.repo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,13 +12,15 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String username;
+
+    @JsonIgnore
     private String password;
 
     public Long getId() {

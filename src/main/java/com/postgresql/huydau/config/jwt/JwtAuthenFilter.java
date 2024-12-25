@@ -1,4 +1,4 @@
-package com.postgresql.huydau.config;
+package com.postgresql.huydau.config.jwt;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import ch.qos.logback.core.util.StringUtil;
+import com.postgresql.huydau.config.UserPrincipalAuthenToken;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

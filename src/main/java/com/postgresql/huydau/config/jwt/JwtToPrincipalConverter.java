@@ -1,4 +1,4 @@
-package com.postgresql.huydau.config;
+package com.postgresql.huydau.config.jwt;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.postgresql.huydau.config.UserPrincipal;
 
 @Component
 public class JwtToPrincipalConverter {

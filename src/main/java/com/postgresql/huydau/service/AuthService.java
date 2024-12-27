@@ -1,6 +1,7 @@
 package com.postgresql.huydau.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,24 +30,30 @@ public class AuthService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public LoginResDto attemptLogin(String email, String password) {
-        var authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(email, password));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        var principal = (UserPrincipal) authentication.getPrincipal();
+    public ResponseEntity<?> attemptLogin(String email, String password) {
+        try {
+            var authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(email, password));
 
-        var token = jwtIssuer.issue(JwtIssuer.Request.builder()
-                .username(principal.getUsername())
-                .build());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            var principal = (UserPrincipal) authentication.getPrincipal();
 
-        return LoginResDto.builder()
-                .token(token)
-                .build();
+            var token = jwtIssuer.issue(JwtIssuer.Request.builder()
+                    .userId(principal.getUserId())
+                    .username(principal.getUsername())
+                    .build());
+
+            return ResponseEntity.ok(LoginResDto.builder()
+                    .token(token)
+                    .build());
+        } catch (Exception e) {
+            return ResponseEntity.status(401).body("Invalid username or password");
+        }
     }
 
     public SignupResDto signup(String username, String password) {
         UserEntity existUSer = userRepo.findByUsername(username);
-        if(existUSer != null) {
+        if (existUSer != null) {
             return SignupResDto.builder()
                     .message("User exist!")
                     .build();

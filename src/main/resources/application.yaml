@@ -14,12 +14,12 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  security:
-    jwt:
-      secret-key: verysecret
-    cors:
-      allow-origin: "*"
-      allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
-      allowed-headers: "*"
-      allowed-credentials: true
-      max-age: 3600
+security:
+  jwt:
+    secret-key: verysecret
+  cors:
+    allow-origin: "*"
+    allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
+    allowed-headers: "*"
+    allowed-credentials: true
+    max-age: 3600

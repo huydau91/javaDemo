@@ -30,7 +30,7 @@ public class WebSercurityConfig {
     public SecurityFilterChain appplicationSercurity(HttpSecurity http) throws Exception {
         http.addFilterBefore(jwtAuthenFilter, UsernamePasswordAuthenticationFilter.class);
 
-        http.cors(cors -> cors.disable())
+        http.cors(cors -> cors.configure(http))
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .formLogin(login -> login.disable())

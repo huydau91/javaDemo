@@ -20,7 +20,7 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private String name;
+    private String title;
     private String imageUrl;
     private Double price;
     private String description;
